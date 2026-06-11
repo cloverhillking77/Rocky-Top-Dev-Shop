@@ -238,9 +238,16 @@ button { color: inherit; }
 .section-heading.light > p { color: #bcbcbc; }
 .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px 24px; }
 .project-wide { grid-column: 1 / -1; }
+.project-link { display: block; }
 .project-art { position: relative; min-height: 470px; overflow: hidden; border-radius: var(--radius); }
 .project-wide .project-art { min-height: 580px; }
 .project-tag { position: absolute; z-index: 4; top: 22px; left: 22px; padding: 9px 13px; border-radius: 999px; background: var(--white); color: var(--ink); font-family: var(--mono); font-size: 9px; text-transform: uppercase; }
+.project-photo::after { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(18, 18, 18, .88), rgba(18, 18, 18, .03) 70%); content: ""; }
+.project-photo img { position: absolute; width: 100%; height: 100%; object-fit: cover; transition: transform 500ms ease; }
+.project:hover .project-photo img { transform: scale(1.035); }
+.project-overlay { position: absolute; z-index: 2; right: 36px; bottom: 34px; left: 36px; }
+.project-overlay small { display: block; margin-bottom: 12px; color: #ddd; font-family: var(--mono); font-size: 9px; letter-spacing: .12em; }
+.project-overlay strong { display: block; max-width: 540px; color: var(--white); font-size: clamp(30px, 4vw, 54px); letter-spacing: -.055em; line-height: .95; }
 .art-outdoors { display: grid; place-items: center; background: linear-gradient(145deg, #b8c9bd, #6d8175); }
 .art-outdoors::before, .art-outdoors::after { position: absolute; right: -10%; bottom: -5%; left: -10%; height: 60%; background: #31483b; clip-path: polygon(0 58%, 14% 22%, 24% 48%, 40% 8%, 55% 55%, 72% 18%, 84% 44%, 100% 10%, 100% 100%, 0 100%); content: ""; }
 .art-outdoors::after { bottom: -25%; background: #1f2b24; transform: scaleX(-1); }
@@ -347,6 +354,7 @@ button { color: inherit; }
   .work-grid { grid-template-columns: 1fr; }
   .project-wide { grid-column: auto; }
   .project-art, .project-wide .project-art { min-height: 420px; }
+  .project-overlay { right: 24px; bottom: 24px; left: 24px; }
   .outdoors-screen { width: 76%; min-width: 0; min-height: 320px; }
   .coffee-bag { right: 5%; width: 145px; height: 235px; }
   .coffee-copy { top: 27%; left: 6%; }

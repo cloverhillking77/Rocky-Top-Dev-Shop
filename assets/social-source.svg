@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <rect width="1200" height="1200" fill="#fff"/>
+  <g transform="translate(0 285)">
+  <rect width="1200" height="630" fill="#f7f3eb"/>
+  <rect x="760" width="440" height="630" fill="#ff8200"/>
+  <circle cx="1020" cy="142" r="84" fill="none" stroke="#4b4b4b" stroke-opacity=".28" stroke-width="3"/>
+  <path d="M710 630 855 390l92 105 78-124 175 205v54H710Z" fill="#4b4b4b" fill-opacity=".28"/>
+  <path d="M690 630 842 444l88 97 94-146 176 211v24H690Z" fill="#343434"/>
+
+  <g transform="translate(72 64)">
+    <rect width="76" height="76" rx="20" fill="#ff8200"/>
+    <path d="m13 49 16-21 9 10 9-14 17 25H13Z" fill="#4b4b4b"/>
+    <path d="m24 53-7 6 7 6m28-12 7 6-7 6m-8-14-10 17" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="168" y="92" fill="#262626" font-family="Arial, sans-serif" font-size="22" font-weight="500">ROCKY TOP</text>
+  <text x="168" y="124" fill="#262626" font-family="Arial, sans-serif" font-size="27" font-weight="800">DEV SHOP</text>
+
+  <text x="72" y="272" fill="#262626" font-family="Arial, sans-serif" font-size="70" font-weight="800" letter-spacing="-4">
+    Websites that
+  </text>
+  <text x="72" y="350" fill="#d85f00" font-family="Arial, sans-serif" font-size="70" font-weight="800" letter-spacing="-4">
+    pull their weight.
+  </text>
+  <text x="76" y="424" fill="#4b4b4b" font-family="Arial, sans-serif" font-size="24">
+    Strategy · Design · Development
+  </text>
+  <rect x="72" y="496" width="294" height="58" rx="29" fill="#262626"/>
+  <text x="104" y="533" fill="#fff" font-family="Arial, sans-serif" font-size="18" font-weight="700">
+    BUILT IN TENNESSEE  ↗
+  </text>
+  </g>
+</svg>
