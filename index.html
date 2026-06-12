@@ -327,20 +327,28 @@
           <p>Tell us where you’re headed. We’ll respond with practical next steps, usually within two business days.</p>
           <a href="mailto:hello@rockytopdevshop.com">hello@rockytopdevshop.com <span aria-hidden="true">↗</span></a>
         </div>
-        <form class="contact-form" novalidate>
+        <div class="contact-form-shell">
+          <p class="form-note">Fields marked with an asterisk are required.</p>
+          <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
+          <form
+            id="contactForm"
+            class="contact-form"
+            data-endpoint="https://formsubmit.co/ajax/hello@rockytopdevshop.com"
+            novalidate
+          >
           <div class="field-row">
             <label>
-              <span>Your name</span>
-              <input type="text" name="name" autocomplete="name" placeholder="Jane Smith" required />
+              <span>Your name *</span>
+              <input id="name" type="text" name="name" autocomplete="name" placeholder="Jane Smith" required />
             </label>
             <label>
-              <span>Email</span>
-              <input type="email" name="email" autocomplete="email" placeholder="jane@company.com" required />
+              <span>Email *</span>
+              <input id="email" type="email" name="email" autocomplete="email" placeholder="jane@company.com" required />
             </label>
           </div>
           <label>
-            <span>What can we help you build?</span>
-            <select name="service" required>
+            <span>What can we help you build? *</span>
+            <select id="service" name="service" required>
               <option value="">Choose a service</option>
               <option>New website</option>
               <option>Website redesign</option>
@@ -350,12 +358,20 @@
             </select>
           </label>
           <label>
-            <span>Tell us a little about the project</span>
-            <textarea name="message" rows="4" placeholder="Goals, timing, budget, or anything else we should know…" required></textarea>
+            <span>Tell us a little about the project *</span>
+            <textarea id="message" name="message" rows="4" placeholder="Goals, timing, budget, or anything else we should know…" required></textarea>
           </label>
-          <button class="button button-light" type="submit">Send project details <span aria-hidden="true">↗</span></button>
-          <p class="form-status" role="status" aria-live="polite"></p>
-        </form>
+          <input type="hidden" name="_subject" value="New Rocky Top Dev Shop project inquiry" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input class="form-honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <button id="submitBtn" class="button button-light" type="submit">
+            <span class="button-label">Send project details</span>
+            <span aria-hidden="true">↗</span>
+          </button>
+          </form>
+          <p class="privacy-note">Your information is used only to respond to your project inquiry.</p>
+        </div>
       </section>
     </main>
 

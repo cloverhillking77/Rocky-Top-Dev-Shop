@@ -1,8 +1,10 @@
 const menuButton = document.querySelector(".menu-toggle");
 const navigation = document.querySelector(".site-nav");
 const navigationLinks = document.querySelectorAll(".site-nav a");
-const contactForm = document.querySelector(".contact-form");
-const formStatus = document.querySelector(".form-status");
+const contactForm = document.querySelector("#contactForm");
+const submitButton = document.querySelector("#submitBtn");
+const submitButtonLabel = submitButton?.querySelector(".button-label");
+const formStatus = document.querySelector("#formStatus");
 
 function closeMenu() {
   menuButton.setAttribute("aria-expanded", "false");
@@ -19,33 +21,57 @@ menuButton.addEventListener("click", () => {
 
 navigationLinks.forEach((link) => link.addEventListener("click", closeMenu));
 
-contactForm.addEventListener("submit", (event) => {
+function showFormStatus(message, type) {
+  if (!formStatus) return;
+  formStatus.textContent = message;
+  formStatus.className = `form-status ${type}`;
+  formStatus.scrollIntoView({ behavior: "smooth", block: "center" });
+}
+
+contactForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
-  const fields = [...contactForm.querySelectorAll("[required]")];
-  const invalidField = fields.find((field) => !field.checkValidity());
 
-  fields.forEach((field) => {
-    field.setAttribute("aria-invalid", String(!field.checkValidity()));
-  });
+  if (!contactForm.reportValidity()) return;
 
-  if (invalidField) {
-    formStatus.textContent = "Please complete each field with valid information.";
-    invalidField.focus();
+  const endpoint = contactForm.dataset.endpoint?.trim();
+  if (!endpoint) {
+    showFormStatus("The form is ready, but its delivery endpoint still needs to be connected.", "error");
     return;
   }
 
-  const formData = new FormData(contactForm);
-  const subject = encodeURIComponent(`Project inquiry: ${formData.get("service")}`);
-  const body = encodeURIComponent(
-    `Name: ${formData.get("name")}\nEmail: ${formData.get("email")}\nService: ${formData.get("service")}\n\nProject details:\n${formData.get("message")}`
-  );
+  formStatus.className = "form-status";
+  formStatus.textContent = "";
+  submitButton.disabled = true;
+  submitButtonLabel.textContent = "Sending...";
 
-  formStatus.textContent = "Opening your email app with the project details ready to send.";
-  window.location.href = `mailto:hello@rockytopdevshop.com?subject=${subject}&body=${body}`;
-});
+  const data = Object.fromEntries(new FormData(contactForm).entries());
 
-document.querySelectorAll(".contact-form input, .contact-form select, .contact-form textarea").forEach((field) => {
-  field.addEventListener("input", () => field.removeAttribute("aria-invalid"));
+  try {
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || result.success === "false" || result.success === false) {
+      throw new Error(result.message || "Your project inquiry could not be sent. Please email us instead.");
+    }
+
+    contactForm.reset();
+    showFormStatus("Thanks! We received your project details and will be in touch within two business days.", "success");
+  } catch (error) {
+    showFormStatus(
+      error.message || "Something went wrong. Please email hello@rockytopdevshop.com instead.",
+      "error"
+    );
+  } finally {
+    submitButton.disabled = false;
+    submitButtonLabel.textContent = "Send project details";
+  }
 });
 
 document.querySelector("#year").textContent = new Date().getFullYear();
