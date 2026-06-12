@@ -1,6 +1,6 @@
 # Rocky Top Dev Shop
 
-A responsive one-page website framework for Rocky Top Dev Shop.
+A responsive multi-page website for Rocky Top Dev Shop, with dedicated Services, Work, Process, and Contact pages.
 
 ## Run locally
 
@@ -12,9 +12,9 @@ Then open `http://localhost:8000`.
 
 ## Before launch
 
-- Replace the concept portfolio entries with real client work and outcomes.
-- Confirm the public email address and connect the contact form to a form provider or backend.
-- Add final social links, privacy terms, analytics, and a production domain.
-- Optimize and add real project photography when it becomes available.
+- Activate the FormSubmit email link sent to `rockytopdevshop@gmail.com`.
+- Connect the production domain and confirm every canonical URL resolves.
+- Add analytics, search-console verification, and final social profile links.
+- Add measurable project outcomes as client performance data becomes available.
 
 The visual palette uses Tennessee Orange (`#FF8200`) and Smokey Gray (`#4B4B4B`) without using University of Tennessee logos or claiming affiliation.
