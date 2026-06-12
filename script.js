@@ -65,7 +65,7 @@ contactForm?.addEventListener("submit", async (event) => {
     showFormStatus("Thanks! We received your project details and will be in touch within two business days.", "success");
   } catch (error) {
     showFormStatus(
-      error.message || "Something went wrong. Please email hello@rockytopdevshop.com instead.",
+      error.message || "Something went wrong. Please email rockytopdevshop@gmail.com instead.",
       "error"
     );
   } finally {
