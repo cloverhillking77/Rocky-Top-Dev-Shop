@@ -5,6 +5,13 @@ const contactForm = document.querySelector("#contactForm");
 const submitButton = document.querySelector("#submitBtn");
 const submitButtonLabel = submitButton?.querySelector(".button-label");
 const formStatus = document.querySelector("#formStatus");
+const requestedService = new URLSearchParams(window.location.search).get("service");
+const serviceSelect = document.querySelector("#service");
+
+if (requestedService && serviceSelect) {
+  const matchingOption = [...serviceSelect.options].find((option) => option.text === requestedService);
+  if (matchingOption) serviceSelect.value = matchingOption.value;
+}
 
 function closeMenu() {
   if (!menuButton || !navigation) return;
